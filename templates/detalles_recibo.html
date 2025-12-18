@@ -1,0 +1,143 @@
+<div class="container-fluid p-0">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Información General</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>ID Code</th>
+                            <td>{{ recibo.idcode or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha</th>
+                            <td>{{ recibo.fecha.strftime('%d/%m/%Y') if recibo.fecha else '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Orden de Compra</th>
+                            <td>{{ recibo.orden_compra or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Proveedor</th>
+                            <td>{{ recibo.proveedor or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Número de Remisión</th>
+                            <td>{{ recibo.num_remision or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Procedencia</th>
+                            <td>{{ nombre_procedencia or '' }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Detalles del Material</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Cantidad</th>
+                            <td>{{ recibo.cantidad or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tipo</th>
+                            <td>{{ recibo.tipo or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripción del Material</th>
+                            <td>{{ recibo.descripcion_material or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Grado de Acero</th>
+                            <td>{{ recibo.grado_acero or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Número de Placa</th>
+                            <td>{{ recibo.num_placa or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Número de Colada</th>
+                            <td>{{ recibo.num_colada or '' }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Información Adicional</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Número de Certificado</th>
+                            <td>{{ recibo.num_certificado or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>OT</th>
+                            <td>{{ recibo.ot or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Cliente</th>
+                            <td>{{ recibo.cliente or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Estatus</th>
+                            <td>{{ recibo.estatus or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Reporte FO-CC-03</th>
+                            <td>{{ recibo.reporte_focc03 or '' }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Archivos y Sistema</h5>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Archivo Adjunto</th>
+                            <td>
+                                {% if recibo.archivo %}
+                                <a href="{{ url_for('descargar_archivo', id=recibo.id) }}" class="btn btn-sm btn-info">
+                                    <i class="bi bi-download"></i> Descargar archivo
+                                </a>
+                                {% else %}
+                                <span class="text-muted">No hay archivo adjunto</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>ID Orden de Compra</th>
+                            <td>{{ recibo.idordencompra or 'No disponible' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Fecha de Creación</th>
+                            <td>{{ recibo.fecha_creacion }}</td>
+                        </tr>
+                        <tr>
+                            <th>Última Modificación</th>
+                            <td>{{ recibo.fecha_modificacion }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
